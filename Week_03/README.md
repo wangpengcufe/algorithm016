@@ -75,3 +75,22 @@ def helper(self, root, res):
         res.append(root.val)
         self.helper(root.right, res)
 ```
+
+# 从尾到头打印链表
+### 思路1：迭代，辅助栈
+```
+class Solution:
+    def reversePrint(self, head: ListNode) -> List[int]:
+        stack = []
+        while head:
+            stack.append(head.val)
+            head = head.next
+        return stack[::-1]
+```
+
+### 思路2：递归法
+```
+class Solution:
+    def reversePrint(self, head: ListNode) -> List[int]:
+        return self.reversePrint(head.next) + [head.val] if head else []
+```
