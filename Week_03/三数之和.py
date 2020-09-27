@@ -1,6 +1,3 @@
-# 三数之和
-#### 思路：排序+双指针法， O（n^2）
-```
 class Solution:
     def threeSum(self, nums: List[int]) -> List[List[int]]:
         nums.sort()
@@ -23,4 +20,3 @@ class Solution:
                     L += 1
                     R -= 1
         return re
-```
