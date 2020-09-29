@@ -25,7 +25,7 @@ class Solution:
 ```
 
 # 买卖股票的最佳时机II
-### 贪心法，直接比较当前元素和前一个元素
+### 思路：贪心法，直接比较当前元素和前一个元素
 ```
 class Solution:
     def maxProfit(self, prices: List[int]) -> int:
