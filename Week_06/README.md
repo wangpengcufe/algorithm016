@@ -23,10 +23,10 @@ class Solution:
 # 回文字串
 #### 题目：https://leetcode-cn.com/problems/palindromic-substrings/   647
 #### 思路：动态规划dp,字符串s[i?j]是否为回文子串，如果是，dp[i][j]=true，
-#### 如果不是, dp[i][j]=false。考虑base case，这里显而易见，当只有一个字母的时候肯定是回文子串。
-#### 为什么从右下角遍历：因为在填dp表时，(i, j) 位置的值依赖于（i+1,j-1），
-#### 也就是当前位置的左下方。显然如果从上往下遍历，左下方的值就完全没有初始化，
-#### 当然当前位置也会是错误的。但是从右下角遍历就保证了左下方的所有值都已经计算好了。
+     如果不是, dp[i][j]=false。考虑base case，这里显而易见，当只有一个字母的时候肯定是回文子串。
+     为什么从右下角遍历：因为在填dp表时，(i, j) 位置的值依赖于（i+1,j-1），
+     也就是当前位置的左下方。显然如果从上往下遍历，左下方的值就完全没有初始化，
+     当然当前位置也会是错误的。但是从右下角遍历就保证了左下方的所有值都已经计算好了。
 ```
 class Solution:
     def countSubstrings(self, s: str) -> int:
@@ -74,12 +74,12 @@ class Solution:
                 res = max(res, dp[i][j])
         return res ** 2
 ```
-
-# 题目： https://leetcode-cn.com/problems/decode-ways   解码方法 
+# 解码方法
+#### 题目： https://leetcode-cn.com/problems/decode-ways    
 #### 思路： # dp[i]：以 s[i] 结尾的前缀字符串的解码个数
-        #### 分类讨论：
-        #### 1、s[i] != '0' 时，dp[i] = dp[i - 1]
-        #### 2、10 <= s[i - 1..i] <= 26 时，dp[i] += dp[i - 2]
+#### 分类讨论：
+#### 1、s[i] != '0' 时，dp[i] = dp[i - 1]
+#### 2、10 <= s[i - 1..i] <= 26 时，dp[i] += dp[i - 2]
 ```
 class Solution:
     def numDecodings(self, s: str) -> int:
