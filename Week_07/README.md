@@ -12,7 +12,7 @@ class Solution:
         return dp[-1]
 ```
 
-# 547 朋友圈
+# 547. 朋友圈
 #### 题目：https://leetcode-cn.com/problems/friend-circles/  547
 #### 思路：深度优先搜索，dfs；下标存的是朋友，下标10表示1和0的关系，下标01表示的是；数字存的是关系，1表示朋友，0表示不是朋友。
 ```
@@ -32,7 +32,7 @@ class Solution:
         return count 
 ```
 
-# 200 岛屿数量 
+# 200. 岛屿数量 
 #### 题目：https://leetcode-cn.com/problems/number-of-islands/  
 #### 思路：搜索，dfs
 ```
@@ -57,7 +57,7 @@ class Solution:
         return count
 ```
 
-# 22 括号生成
+# 22. 括号生成
 #### 题目：https://leetcode-cn.com/problems/generate-parentheses/ 
 #### 思路：递归
 ```
@@ -74,4 +74,28 @@ class Solution:
                 dfs(left, right + 1, tmp + ')')
         dfs(0, 0, '')
         return result
+```
+
+# 127. 单词接龙
+#### 题目：https://leetcode-cn.com/problems/word-ladder 
+#### 思路：搜索，BFS
+```
+class Solution:
+    def ladderLength(self, beginWord: str, endWord: str, wordList: List[str]) -> int:
+        arr = set(wordList)
+        q = collections.deque([(beginWord, 1)])
+        alpha = string.ascii_lowercase
+        visited = set()
+
+        while q:
+            word, length = q.popleft()
+            if word == endWord:
+                return length
+            for i in range(len(beginWord)):
+                for ch in alpha:
+                    new_word = word[:i] + ch + word[i+1:]
+                    if new_word in arr and new_word not in visited:
+                        q.append((new_word, length + 1))
+                        visited.add(new_word)
+        return 0
 ```
