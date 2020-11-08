@@ -1,6 +1,6 @@
 # LRU缓存机制
 #### 题目：https://leetcode-cn.com/problems/lru-cache/   146. LRU缓存机制
-#### 思路：一，用结合了哈希表与双向链表的数据结构 OrderedDict
+#### 思路一：用结合了哈希表与双向链表的数据结构 OrderedDict
 #### 思路二：通过哈希表辅以双向链表实现，用一个哈希表和一个双向链表维护所有在缓存中的键值对。
 ```
 class LRUCache(collections.OrderedDict):
@@ -89,4 +89,27 @@ class LRUCache:
         node = self.tail.prev
         self.removeNode(node)
         return node
+```
+
+# 合并区间
+#### 题目：https://leetcode-cn.com/problems/merge-intervals/    56. 合并区间
+#### 思路：按照区间左端点从小到大排序，比较栈顶区间和当前区间是否有交集；
+#### 有交集，则将栈顶区间的右端点更新为当前可达的最大值；
+#### 无交集，则将当前区间加入栈中；时间复杂度：O(NlogN)
+
+```
+class Solution:
+    def merge(self, intervals: List[List[int]]) -> List[List[int]]:
+        if not intervals:
+            return []
+        stack=[]
+        n=len(intervals)
+        intervals.sort()
+        for i,interval in enumerate(intervals):
+            left,right=interval
+            if stack and stack[-1][1]>=left:
+                stack[-1][1]=max(stack[-1][1],right)
+            else:
+                stack.append(interval)
+        return stack
 ```
