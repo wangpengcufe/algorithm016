@@ -127,3 +127,12 @@ class Solution:
             res+=1
         return res
 ```
+
+# 2的幂
+#### 题目：https://leetcode-cn.com/problems/power-of-two/   231. 2的幂
+#### 思路：通过 n > 0 且 n & (n - 1) == 0 即可判定是否满足n = 2^x 
+```
+class Solution:
+    def isPowerOfTwo(self, n: int) -> bool:
+        return n > 0 and n & (n - 1) == 0
+```
