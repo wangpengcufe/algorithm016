@@ -1,8 +1,5 @@
-# LRUç¼“å­˜æœºåˆ¶
-#### é¢˜ç›®ï¼šhttps://leetcode-cn.com/problems/lru-cache/   146. LRUç¼“å­˜æœºåˆ¶
-#### æ€è·¯ï¼šä¸€ï¼Œç”¨ç»“åˆäº†å“ˆå¸Œè¡¨ä¸åŒå‘é“¾è¡¨çš„æ•°æ®ç»“æ„ OrderedDict
-#### æ€è·¯äºŒï¼šé€šè¿‡å“ˆå¸Œè¡¨è¾…ä»¥åŒå‘é“¾è¡¨å®ç°ï¼Œç”¨ä¸€ä¸ªå“ˆå¸Œè¡¨å’Œä¸€ä¸ªåŒå‘é“¾è¡¨ç»´æŠ¤æ‰€æœ‰åœ¨ç¼“å­˜ä¸­çš„é”®å€¼å¯¹ã€‚
-```
+ÌâÄ¿£ºhttps://leetcode-cn.com/problems/lru-cache/   146. LRU»º´æ»úÖÆ
+Ë¼Â·£ºÒ»£¬ÓÃ½áºÏÁË¹şÏ£±íÓëË«ÏòÁ´±íµÄÊı¾İ½á¹¹ OrderedDict
 class LRUCache(collections.OrderedDict):
     def __init__(self, capacity: int):
         super().__init__()
@@ -20,10 +17,9 @@ class LRUCache(collections.OrderedDict):
         self[key] = value
         if len(self) > self.capacity:
             self.popitem(last=False)
-```
-#### åŒå‘é“¾è¡¨æŒ‰ç…§è¢«ä½¿ç”¨çš„é¡ºåºå­˜å‚¨äº†è¿™äº›é”®å€¼å¯¹ï¼Œé è¿‘å¤´éƒ¨çš„é”®å€¼å¯¹æ˜¯æœ€è¿‘ä½¿ç”¨çš„ï¼Œè€Œé è¿‘å°¾éƒ¨çš„é”®å€¼å¯¹æ˜¯æœ€ä¹…æœªä½¿ç”¨çš„ã€‚
-#### å“ˆå¸Œè¡¨å³ä¸ºæ™®é€šçš„å“ˆå¸Œæ˜ å°„ï¼ˆHashMapï¼‰ï¼Œé€šè¿‡ç¼“å­˜æ•°æ®çš„é”®æ˜ å°„åˆ°å…¶åœ¨åŒå‘é“¾è¡¨ä¸­çš„ä½ç½®ã€‚
-```
+Ë¼Â·¶ş£ºÍ¨¹ı¹şÏ£±í¸¨ÒÔË«ÏòÁ´±íÊµÏÖ£¬ÓÃÒ»¸ö¹şÏ£±íºÍÒ»¸öË«ÏòÁ´±íÎ¬»¤ËùÓĞÔÚ»º´æÖĞµÄ¼üÖµ¶Ô¡£
+Ë«ÏòÁ´±í°´ÕÕ±»Ê¹ÓÃµÄË³Ğò´æ´¢ÁËÕâĞ©¼üÖµ¶Ô£¬¿¿½üÍ·²¿µÄ¼üÖµ¶ÔÊÇ×î½üÊ¹ÓÃµÄ£¬¶ø¿¿½üÎ²²¿µÄ¼üÖµ¶ÔÊÇ×î¾ÃÎ´Ê¹ÓÃµÄ¡£
+¹şÏ£±í¼´ÎªÆÕÍ¨µÄ¹şÏ£Ó³Éä£¨HashMap£©£¬Í¨¹ı»º´æÊı¾İµÄ¼üÓ³Éäµ½ÆäÔÚË«ÏòÁ´±íÖĞµÄÎ»ÖÃ¡£
 class DLinkedNode:
     def __init__(self, key=0, value=0):
         self.key = key
@@ -34,7 +30,7 @@ class DLinkedNode:
 class LRUCache:
     def __init__(self, capacity: int):
         self.cache = dict()
-        # ä½¿ç”¨ä¼ªå¤´éƒ¨å’Œä¼ªå°¾éƒ¨èŠ‚ç‚¹    
+        # Ê¹ÓÃÎ±Í·²¿ºÍÎ±Î²²¿½Úµã    
         self.head = DLinkedNode()
         self.tail = DLinkedNode()
         self.head.next = self.tail
@@ -45,28 +41,28 @@ class LRUCache:
     def get(self, key: int) -> int:
         if key not in self.cache:
             return -1
-        # å¦‚æœ key å­˜åœ¨ï¼Œå…ˆé€šè¿‡å“ˆå¸Œè¡¨å®šä½ï¼Œå†ç§»åˆ°å¤´éƒ¨
+        # Èç¹û key ´æÔÚ£¬ÏÈÍ¨¹ı¹şÏ£±í¶¨Î»£¬ÔÙÒÆµ½Í·²¿
         node = self.cache[key]
         self.moveToHead(node)
         return node.value
 
     def put(self, key: int, value: int) -> None:
         if key not in self.cache:
-            # å¦‚æœ key ä¸å­˜åœ¨ï¼Œåˆ›å»ºä¸€ä¸ªæ–°çš„èŠ‚ç‚¹
+            # Èç¹û key ²»´æÔÚ£¬´´½¨Ò»¸öĞÂµÄ½Úµã
             node = DLinkedNode(key, value)
-            # æ·»åŠ è¿›å“ˆå¸Œè¡¨
+            # Ìí¼Ó½ø¹şÏ£±í
             self.cache[key] = node
-            # æ·»åŠ è‡³åŒå‘é“¾è¡¨çš„å¤´éƒ¨
+            # Ìí¼ÓÖÁË«ÏòÁ´±íµÄÍ·²¿
             self.addToHead(node)
             self.size += 1
             if self.size > self.capacity:
-                # å¦‚æœè¶…å‡ºå®¹é‡ï¼Œåˆ é™¤åŒå‘é“¾è¡¨çš„å°¾éƒ¨èŠ‚ç‚¹
+                # Èç¹û³¬³öÈİÁ¿£¬É¾³ıË«ÏòÁ´±íµÄÎ²²¿½Úµã
                 removed = self.removeTail()
-                # åˆ é™¤å“ˆå¸Œè¡¨ä¸­å¯¹åº”çš„é¡¹
+                # É¾³ı¹şÏ£±íÖĞ¶ÔÓ¦µÄÏî
                 self.cache.pop(removed.key)
                 self.size -= 1
         else:
-            # å¦‚æœ key å­˜åœ¨ï¼Œå…ˆé€šè¿‡å“ˆå¸Œè¡¨å®šä½ï¼Œå†ä¿®æ”¹ valueï¼Œå¹¶ç§»åˆ°å¤´éƒ¨
+            # Èç¹û key ´æÔÚ£¬ÏÈÍ¨¹ı¹şÏ£±í¶¨Î»£¬ÔÙĞŞ¸Ä value£¬²¢ÒÆµ½Í·²¿
             node = self.cache[key]
             node.value = value
             self.moveToHead(node)
@@ -89,4 +85,3 @@ class LRUCache:
         node = self.tail.prev
         self.removeNode(node)
         return node
-```
