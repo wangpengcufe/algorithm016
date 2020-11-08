@@ -95,7 +95,8 @@ class LRUCache:
 #### 题目：https://leetcode-cn.com/problems/merge-intervals/    56. 合并区间
 #### 思路：按照区间左端点从小到大排序，比较栈顶区间和当前区间是否有交集；
 #### 有交集，则将栈顶区间的右端点更新为当前可达的最大值；
-#### 无交集，则将当前区间加入栈中；时间复杂度：O(NlogN)
+#### 无交集，则将当前区间加入栈中；
+#### 时间复杂度：O(NlogN)
 
 ```
 class Solution:
@@ -112,4 +113,17 @@ class Solution:
             else:
                 stack.append(interval)
         return stack
+```
+# 位1的个数
+#### 题目：https://leetcode-cn.com/problems/number-of-1-bits/ 191. 位1的个数
+#### 思路：二进制中最低位的1会通过n-1操作消失，而比最低位1高的位不变，通过n&=n-1保留剩余高位的1及低位的0
+#### 时间复杂度：O(1)
+```
+class Solution:
+    def hammingWeight(self, n: int) -> int:
+        res=0
+        while n:
+            n&=n-1
+            res+=1
+        return res
 ```
