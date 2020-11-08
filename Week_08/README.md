@@ -136,3 +136,17 @@ class Solution:
     def isPowerOfTwo(self, n: int) -> bool:
         return n > 0 and n & (n - 1) == 0
 ```
+# 颠倒二进制位
+#### 题目：https://leetcode-cn.com/problems/reverse-bits/   190. 颠倒二进制位
+#### 思路：（1）n&1是为了把最低位找出来，然后把它挪到第31位（左移，相当于变成最高位），同理下一次循环把最低位移到第三十位
+#### （2）将n右移一位，为了n&1操作
+```
+class Solution:
+    def reverseBits(self, n: int) -> int:
+        ret, power = 0, 31
+        while n:
+            ret += (n & 1) << power
+            n = n >> 1
+            power -= 1
+        return ret
+```
